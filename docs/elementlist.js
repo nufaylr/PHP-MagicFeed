@@ -1,0 +1,3 @@
+
+var ApiGen = ApiGen || {};
+ApiGen.elements = [["p","MagicFeed::$dom"],["p","MagicFeed::$errors"],["p","MagicFeed::$invalidTags"],["p","MagicFeed::$itemDefault"],["p","MagicFeed::$items"],["p","MagicFeed::$options"],["m","MagicFeed::__construct()"],["m","MagicFeed::addError()"],["m","MagicFeed::count()"],["m","MagicFeed::createSummary()"],["m","MagicFeed::enableCache()"],["m","MagicFeed::extractMedia()"],["m","MagicFeed::get()"],["m","MagicFeed::getCache()"],["m","MagicFeed::getError()"],["m","MagicFeed::parse()"],["m","MagicFeed::parseAtom()"],["m","MagicFeed::parseRss()"],["m","MagicFeed::set()"],["m","MagicFeed::setCache()"]];
