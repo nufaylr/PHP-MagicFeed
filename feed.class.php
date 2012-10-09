@@ -1,7 +1,7 @@
 <?php
 /**
- * Parse RSS and ATOM feeds. Standarize the same names for both systems.
- * 
+ * A universal parser for RSS and Atom feeds
+ *
  * - See {@link $itemDefault} for a list of tags returned in each item.
  * - See {@link $options} for a  list of options available before use {@link parse()}
  * <br />
@@ -23,15 +23,15 @@
  * }
  * // var_dump($items);
  * </code>
- * 
- * Example with cache using {@link enableCache()}. Set directory "./cache" and 
+ *
+ * Example with cache using {@link enableCache()}. Set directory "./cache" and
  * 24 Hours (1440 mins) of expiration time.
  * <code>
  * MagicFeed::enableCache('./cache', 1440);
  * $items = MagicFeed::parse('http://www.reddit.com/.rss');
  * // var_dump($items);
  * </code>
- * 
+ *
  * Using config options. See all options and default values in property
  * {@link $options} (private)
  * <code>
@@ -188,7 +188,8 @@ class MagicFeed
      *
      * @return int Number of items
      */
-    public static function count() {
+    public static function count()
+    {
         return count(self::$items);
     }
 
@@ -237,10 +238,10 @@ class MagicFeed
     {
         self::$options[$option] = $value;
     }
-    
+
     /**
      * Get the last error
-     * 
+     *
      * return string Last error. False if there aren't errors.
      */
     public static function getError()
@@ -248,15 +249,15 @@ class MagicFeed
         if (count(self::$errors)) {
             return end(self::$errors);
         }
-        
+
         return false;
     }
-    
-    
+
+
     /****************************
       END PUBLIC FUNCTIONS
       **************************/
-      
+
 
     /**
      * Parse an RSS file. Use the private property {@link $dom} initialized
@@ -506,7 +507,7 @@ class MagicFeed
 
     /**
      * Save cache for actual $items
-     * 
+     *
      * @return bool False if cache doesn't exists or error. True otherwise.
      */
     private static function setCache()
@@ -525,7 +526,7 @@ class MagicFeed
 
     /**
      * Add a new error
-     * 
+     *
      * @return void
      */
     private static function addError($str)
@@ -533,27 +534,4 @@ class MagicFeed
         $errors[] = $str;
     }
 }
-
-
-$time = microtime();
-$time = explode(' ', $time);
-$time = $time[1] + $time[0];
-$start = $time;
-
-MagicFeed::enableCache(dirname(__FILE__).'/cache', 2);
-//echo '<pre>'.print_r(MagicFeed::parse('rss2.xml'), true).'</pre>';
-$feeds = array(
-    'http://feeds.feedburner.com/publico/portada?format=xml',
-    'http://elmundo.feedsportal.com/elmundo/rss/portada.xml',
-);
-MagicFeed::parse($feeds);
-// MagicFeed::set('rss_summary', true);
-//die(var_dump(MagicFeed::parse('http://feeds.feedburner.com/publico/internacional?format=xml')));
-
-$time = microtime();
-$time = explode(' ', $time);
-$time = $time[1] + $time[0];
-$finish = $time;
-$total_time = round(($finish - $start), 4);
-echo 'Page generated in '.$total_time.' seconds.';
 
