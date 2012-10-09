@@ -7,7 +7,7 @@ A universal parser for RSS and Atom feeds with basic file system cache.
     $items = MagicFeed::parse('http://www.reddit.com/.rss');
     if (MagicFeed::count()) {
         foreach ($items as $item) {
-            echo $item['title'].<br />
+            echo $item['title'].'<br />';
         }
     } else {
         if (MagicFeed::getError()) {
